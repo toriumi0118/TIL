@@ -28,3 +28,17 @@ https://watarilog.firebaseapp.com/
 
 ここにhostingされた :tada:
 
+#### memo
+
+localでserveする方法もあるみたい（未確認）
+
+| コマンド | 説明 |
+| --- | --- |
+| firebase deploy | プロジェクト ディレクトリにデプロイできるすべてのリソースのリリースを作成します |
+| firebase deploy --only hosting:target-name | 指定した Hosting ターゲットのリソースのみのリリースを作成します |
+| firebase serve | Firebase プロジェクトをローカルでサービス提供します
+| firebase serve --only hosting:target-name | 指定した Hosting ターゲットのリソースのみをローカルでサービス提供します|
+
+### なんとかしてbasic authもどきをする
+
+firebase functions経由で
