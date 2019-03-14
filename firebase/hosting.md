@@ -36,9 +36,36 @@ localでserveする方法もあるみたい（未確認）
 | --- | --- |
 | firebase deploy | プロジェクト ディレクトリにデプロイできるすべてのリソースのリリースを作成します |
 | firebase deploy --only hosting:target-name | 指定した Hosting ターゲットのリソースのみのリリースを作成します |
-| firebase serve | Firebase プロジェクトをローカルでサービス提供します
-| firebase serve --only hosting:target-name | 指定した Hosting ターゲットのリソースのみをローカルでサービス提供します|
+| firebase serve | Firebase プロジェクトをローカルでサービス提供します |
+| firebase serve --only hosting:target-name | 指定した Hosting ターゲットのリソースのみをローカルでサービス提供します |
 
-### なんとかしてbasic authもどきをする
+### basic authもどきをする
 
-firebase functions経由で
+hostingだけの機能で実現するのは無理そうなのでfunctionsを導入。
+
+```
+$ firebase init functions
+# tsを使うようにする
+```
+
+#### firebase functionsの設定
+
+これでいけるかな。
+全体にbasicauthをかけて、
+app以下であれば `/app` にredirect。
+
+```
+import * as functions from "firebase-functions";
+import * as express from "express";
+import * as basicAuth from "basic-auth-connect";
+
+const app = express();
+
+app.use(basicAuth("wataridori", "inc"));
+
+app.get("/app", (_req, res) => {
+  res.redirect("/app");
+});
+
+exports.app = functions.https.onRequest(app);
+```
