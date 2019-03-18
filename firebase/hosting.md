@@ -39,35 +39,3 @@ localでserveする方法もあるみたい（未確認）
 | firebase serve | Firebase プロジェクトをローカルでサービス提供します |
 | firebase serve --only hosting:target-name | 指定した Hosting ターゲットのリソースのみをローカルでサービス提供します |
 
-### basic authもどきをする
-
-（と思ったけど、自分が作ったelm appが `/app` で動くように想定されて作られていないので、ちょっと辛そう）
-
-hostingだけの機能で実現するのは無理そうなのでfunctionsを導入。
-
-```
-$ firebase init functions
-# tsを使うようにする
-```
-
-#### firebase functionsの設定
-
-これでいけるかな。
-全体にbasicauthをかけて、
-app以下であれば `/app` にredirect。
-
-```
-import * as functions from "firebase-functions";
-import * as express from "express";
-import * as basicAuth from "basic-auth-connect";
-
-const app = express();
-
-app.use(basicAuth("wataridori", "inc"));
-
-app.get("/app", (_req, res) => {
-  res.redirect("/app");
-});
-
-exports.app = functions.https.onRequest(app);
-```
