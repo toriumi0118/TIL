@@ -18,3 +18,9 @@ translateZはgpuを利用して配下の要素を描画するように。
 `background-color: rbga(0,0,0,0.5);` で指定している部分がtransform中にちょっと濃くなる。（たまに）
 なぜかはわからん。。。
 gpuアクセラレーターと食い合わせが悪いのか、なんか移動中の演算に間違いでもあるのか。。。
+
+# img a タグの青いハイライトを消す
+
+```
+  -webkit-tap-highlight-color: transparent;
+```
