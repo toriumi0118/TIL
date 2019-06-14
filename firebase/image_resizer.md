@@ -1,4 +1,4 @@
-# Create Image Resizer on Firebase
+# Create Image Resizer with Cloud Functions.
 
 ## Architecture
 
@@ -10,11 +10,15 @@ refs: https://github.com/firebase/functions-samples/tree/master/generate-thumbna
 ## Build Up
 
 1. create Storage with Firebase console.
-1. install firebase dependencies to repository.
-   ```bash
-   $ yarn add firebase@latest
-   $ npm install -g firebase-tools
-   $ firebase login
-   $ firebase init functions
+1. setup [gcloud sdk](https://cloud.google.com/sdk/docs/).
+1. make directory structure.
    ```
-   
+   functions/
+     - cmd/
+       - main.go <= for development.
+     - function.go <= run in gcp as entrypoint.
+     - go.mod
+
+## Source
+
+
