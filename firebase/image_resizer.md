@@ -4,10 +4,12 @@
 
 You can get resized images which is handled by GCF, the specifications are below.
 
-- set query paramter (https://functionurl/accountId/imageName.png?w=200&h=400&crop=cover)
+URL example *https://functionurl/accountId/imageName.png?w=200&h=400&crop=cover*
+
+- set query paramter
   - w: set number of width in pixel
   - h: set number of height in pixel
-  - crop: set cover if you want to crop the image in cropped in the rectangle set by w and h param.
+  - c: set `cover` if you want to crop the image in cropped in the rectangle set by w and h param.
   
 ## Architecture
 
